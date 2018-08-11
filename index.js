@@ -31,7 +31,10 @@ io.on("connection", socket => {
             console.log(`emitting--> handle: ${data.handle}, message: ${data.message}`);
 
         }
-
         console.log('active users: ', Object.keys(io.sockets.sockets).length);
+    })
+
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data);
     })
 });
